@@ -1,4 +1,5 @@
 {
+    "caseSensitive": false,
     "properties": {
         "name": "main",
         "environment": {
@@ -15,7 +16,7 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "dom/GetElement",
-                "x": 252,
+                "x": 36,
                 "y": 180,
                 "width": 72,
                 "height": 72
@@ -25,8 +26,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "core/Output",
-                "x": 432,
-                "y": 360,
+                "x": 180,
+                "y": 216,
                 "width": 72,
                 "height": 72
             }
@@ -35,8 +36,8 @@
             "component": "dom/WriteHtml",
             "metadata": {
                 "label": "dom/WriteHtml",
-                "x": 684,
-                "y": 288,
+                "x": 468,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -45,8 +46,8 @@
             "component": "dom/GetElement",
             "metadata": {
                 "label": "dom/GetElement",
-                "x": 252,
-                "y": 288,
+                "x": 36,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -55,8 +56,8 @@
             "component": "interaction/ListenMouse",
             "metadata": {
                 "label": "interaction/ListenMouse",
-                "x": 432,
-                "y": 180,
+                "x": 180,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -65,8 +66,38 @@
             "component": "core/Kick",
             "metadata": {
                 "label": "core/Kick",
-                "x": 576,
-                "y": 180,
+                "x": 324,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Kick_ncin8": {
+            "component": "core/Kick",
+            "metadata": {
+                "label": "core/Kick",
+                "x": 324,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "canvas/Draw_7na3z": {
+            "component": "canvas/Draw",
+            "metadata": {
+                "label": "Draw",
+                "x": 180,
+                "y": -72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "canvas/DrawImage_npv6u": {
+            "component": "canvas/DrawImage",
+            "metadata": {
+                "label": "DrawImage",
+                "x": 0,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -81,8 +112,7 @@
             "tgt": {
                 "process": "dom/WriteHtml_fpz6j",
                 "port": "container"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -125,18 +155,53 @@
         },
         {
             "src": {
+                "process": "dom/GetElement_7amk2",
+                "port": "element"
+            },
+            "tgt": {
+                "process": "core/Output_cg49",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "core/Kick_ey1nh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "dom/WriteHtml_fpz6j",
+                "port": "html"
+            }
+        },
+        {
+            "src": {
                 "process": "interaction/ListenMouse_1l373",
                 "port": "click"
             },
             "tgt": {
                 "process": "core/Kick_ey1nh",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
-                "process": "core/Kick_ey1nh",
+                "process": "interaction/ListenMouse_1l373",
+                "port": "click"
+            },
+            "tgt": {
+                "process": "core/Kick_ncin8",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "core/Kick_ncin8",
                 "port": "out"
             },
             "tgt": {
@@ -164,6 +229,23 @@
             "tgt": {
                 "process": "core/Kick_ey1nh",
                 "port": "data"
+            }
+        },
+        {
+            "data": "Booga booga",
+            "tgt": {
+                "process": "core/Kick_ncin8",
+                "port": "data"
+            }
+        },
+        {
+            "data": {
+                "x": 0,
+                "y": 0
+            },
+            "tgt": {
+                "process": "canvas/DrawImage_npv6u",
+                "port": "destpoint"
             }
         }
     ]
